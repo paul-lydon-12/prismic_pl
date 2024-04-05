@@ -1,0 +1,35 @@
+@import 'styles/config';
+
+.richTextImage {
+  position: relative;
+  z-index: 0;
+
+  margin-block: 3rem;
+
+  &:first-child {
+    margin-block-start: 0;
+  }
+
+  &:last-child {
+    margin-block-end: 0;
+  }
+
+  &__imageWrap {
+    position: relative;
+
+    margin-inline: auto;
+
+    aspect-ratio: var(--w) / var(--h);
+  }
+
+  &__image {
+    @include fit;
+    @include media-position;
+  }
+
+  &__caption {
+    display: block;
+
+    inline-size: 100%;
+  }
+}

@@ -1,0 +1,7 @@
+overwrite: true
+schema: "./graphql.schema.json"
+generates:
+  src/prismic-types.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"

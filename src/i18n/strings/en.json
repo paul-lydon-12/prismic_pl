@@ -1,0 +1,29 @@
+{
+  "close": {
+    "defaultMessage": "Close"
+  },
+  "close_menu": {
+    "defaultMessage": "Close menu"
+  },
+  "frontpage": {
+    "defaultMessage": "Frontpage"
+  },
+  "menu": {
+    "defaultMessage": "Menu"
+  },
+  "next_page": {
+    "defaultMessage": "Next page"
+  },
+  "page_not_found": {
+    "defaultMessage": "Page not found"
+  },
+  "prev_page": {
+    "defaultMessage": "Previous page"
+  },
+  "read_more": {
+    "defaultMessage": "Read more"
+  },
+  "skip_to_content": {
+    "defaultMessage": "Skip to content"
+  }
+}

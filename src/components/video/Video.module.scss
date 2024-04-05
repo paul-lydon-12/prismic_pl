@@ -1,0 +1,84 @@
+@import 'styles/config';
+
+.video {
+  z-index: 0;
+
+  overflow: hidden;
+
+  &:not(.addLayout) {
+    @include fit;
+
+    inline-size: 100%;
+    block-size: 100%;
+  }
+
+  &.addLayout {
+    position: relative;
+
+    &::before {
+      content: '';
+
+      display: block;
+
+      padding-block-end: calc(var(--video-aspect-ratio, 0.5625) * 100%);
+    }
+  }
+
+  &:not(.cover) {
+    @include media-position($fit: contain, $background: true);
+  }
+
+  &.cover {
+    @include media-position($fit: cover, $background: true);
+  }
+
+  &__ratio {
+    .addLayout & {
+      display: block;
+
+      padding-block-end: calc(var(--video-aspect-ratio, 0.5625) * 100%);
+    }
+  }
+
+  &__media {
+    @include fit;
+    @include media-position($fit: contain);
+
+    display: block;
+
+    z-index: 0;
+
+    max-inline-size: none;
+
+    object-fit: contain;
+
+    opacity: 0;
+
+    .cover & {
+      object-fit: cover;
+    }
+
+    .hasStarted & {
+      opacity: 1;
+
+      transition: opacity 100ms linear;
+    }
+
+    .noPoster & {
+      opacity: 1;
+    }
+  }
+
+  &__button {
+    @include fit;
+
+    z-index: 1;
+
+    margin: auto;
+
+    inline-size: 100%;
+    block-size: 100%;
+
+    text-align: center;
+  }
+}

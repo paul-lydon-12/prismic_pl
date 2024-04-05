@@ -1,0 +1,6 @@
+{
+  "apiEndpoint": "https://paulprufa.prismic.io/api/v2",
+  "repositoryName": "paulprufa",
+  "adapter": "@slicemachine/adapter-next",
+  "libraries": ["./src/prismic/slices"]
+}

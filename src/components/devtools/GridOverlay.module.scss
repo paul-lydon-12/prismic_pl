@@ -1,0 +1,74 @@
+@import 'styles/config';
+
+.grid {
+  $color-gap: rgba(#000, 0.025);
+  $color-highlight: rgba(#fff, 0.15);
+
+  position: relative;
+  z-index: 1000;
+
+  pointer-events: none;
+
+  &__container {
+    @include container;
+    @include fit(fixed);
+
+    block-size: 100%;
+  }
+
+  &__visual {
+    @keyframes fade-in {
+      to {
+        opacity: 1;
+      }
+    }
+
+    position: relative;
+
+    inline-size: 100%;
+    block-size: 100%;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation: fade-in 150ms linear forwards;
+
+    @media (max-width: $max-mobile) {
+      outline: 1px solid $color-gap;
+    }
+
+    @media (min-width: $min-mobile) {
+      outline: none;
+
+      background-image: repeating-linear-gradient(
+        to right,
+        $color-highlight,
+        $color-highlight calc((100% / #{$grid-column-count}) - var(--gutter)),
+        calc((100% / #{$grid-column-count}) - var(--gutter)),
+        $color-gap calc(100% / #{$grid-column-count})
+      );
+      background-size: calc(100% + var(--gutter)) 100%;
+      background-position: 0 0;
+    }
+    // visualise container gutter
+    &::before,
+    &::after {
+      content: '';
+
+      position: absolute;
+      inset-block-start: 0;
+      inset-inline-start: 100%;
+
+      inline-size: 50vw;
+      block-size: 100%;
+
+      background: $color-gap;
+    }
+
+    &::after {
+      inset-inline-start: auto;
+      inset-inline-end: 100%;
+    }
+  }
+}

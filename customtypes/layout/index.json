@@ -1,0 +1,61 @@
+{
+  "id": "layout",
+  "label": "Layout",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "uid",
+          "placeholder": ""
+        }
+      }
+    },
+    "Navigation": {},
+    "Footer": {},
+    "Default SEO": {
+      "title_template": {
+        "type": "StructuredText",
+        "config": {
+          "single": "heading2",
+          "label": "title_template",
+          "placeholder": "Template for <title>, TITLE replaced by content title"
+        }
+      },
+      "seo_title_template": {
+        "type": "StructuredText",
+        "config": {
+          "single": "heading2",
+          "label": "seo_title_template",
+          "placeholder": "Template for SEO title, TITLE replaced by content title"
+        }
+      },
+      "default_seo_title": {
+        "type": "StructuredText",
+        "config": {
+          "single": "heading2",
+          "label": "Default SEO title"
+        }
+      },
+      "default_seo_description": {
+        "type": "StructuredText",
+        "config": {
+          "single": "paragraph",
+          "label": "Default SEO description"
+        }
+      },
+      "default_seo_image": {
+        "type": "Image",
+        "config": {
+          "constraint": {
+            "width": 1200
+          },
+          "thumbnails": [],
+          "label": "Default SEO image"
+        }
+      }
+    }
+  }
+}

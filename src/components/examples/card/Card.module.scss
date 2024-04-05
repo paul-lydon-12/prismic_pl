@@ -1,0 +1,40 @@
+@import 'styles/config';
+.card {
+  --card-gutter: 20px;
+  padding: var(--card-gutter);
+
+  inline-size: 100%;
+
+  background: var(--color-primary);
+  color: var(--color-font-contrast);
+
+  // subgrid styles
+  @media (min-width: $min-tablet) {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    // overrides above fallback
+    grid-template-rows: subgrid;
+
+    // span parent grid
+    grid-row: span 3;
+    // reset gaps
+    grid-row-gap: 0;
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+
+    padding-block-end: var(--card-gutter);
+    margin-block-end: var(--card-gutter);
+
+    border-block-end: 1px solid currentColor;
+  }
+
+  &__date {
+    margin-block-start: var(--card-gutter);
+    padding-block-start: var(--card-gutter);
+
+    border-block-start: 1px solid currentColor;
+  }
+}

@@ -1,0 +1,39 @@
+@import 'styles/config';
+
+.exitPreview {
+  position: fixed;
+  inset-block-end: 10px;
+  inset-inline-start: 10px;
+  z-index: 1000;
+
+  padding-block: 10px;
+  padding-inline: 20px;
+
+  border-radius: 15px;
+
+  font-size: 14px;
+  font-family: sans-serif;
+
+  background: #5163ba;
+  color: #fff;
+
+  &__button {
+    display: inline-block;
+
+    margin-inline-start: 10px;
+
+    padding-block: 3px;
+    padding-inline: 8px;
+
+    border-radius: 12px;
+
+    vertical-align: middle;
+
+    background: #f5a830;
+
+    &:hover,
+    &:focus {
+      background: #cc8d28;
+    }
+  }
+}

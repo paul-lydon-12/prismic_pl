@@ -1,0 +1,230 @@
+/* stylelint-disable prettier/prettier */
+// global reset file
+html,
+body,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+time,
+mark,
+audio,
+video,
+details,
+summary {
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  font-weight: inherit;
+  font-size: inherit;
+  vertical-align: baseline;
+}
+
+html {
+  box-sizing: border-box;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+object,
+embed,
+video {
+  display: block;
+
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+iframe {
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+li {
+  list-style: inherit;
+}
+
+address,
+cite,
+em,
+i {
+  font-style: inherit;
+}
+
+blockquote,
+q {
+  quotes: none;
+
+  &::before,
+  &::after {
+    content: '';
+    content: none;
+  }
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-block-end: 1px dotted currentColor;
+
+  cursor: help;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+th {
+  font-weight: 700;
+  vertical-align: bottom;
+}
+
+hr {
+  display: block;
+
+  margin-block: 1em;
+  margin-inline: 0;
+  padding: 0;
+
+  block-size: 1px;
+
+  border: 0;
+  border-block-start: 1px solid currentColor;
+}
+
+pre {
+  white-space: pre;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+strong,
+b {
+  font-weight: inherit;
+}
+
+label,
+input[type='button'],
+input[type='submit'],
+input[type='file'],
+button {
+  cursor: pointer;
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+
+  border-radius: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  font-variation-settings: inherit;
+
+  color: inherit;
+  background: transparent;
+}
+
+button,
+input[type='button'] {
+  padding: 0;
+
+  border: 0;
+
+  text-align: inherit;
+
+  background: transparent;
+  color: inherit;
+
+  -webkit-tap-highlight-color: transparent;
+}

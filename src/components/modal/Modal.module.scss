@@ -1,0 +1,83 @@
+@import 'styles/config';
+
+.modal {
+  @include fit(fixed);
+
+  contain: strict;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: $zindex-modal;
+
+  padding-inline-start: var(--container-gutter);
+  padding-inline-end: var(--container-gutter);
+
+  inline-size: 100vw;
+  block-size: 100%;
+  overflow: hidden;
+
+  background-color: var(--color-backdrop, rgba(0, 0, 0, 0.3));
+
+  &.enter {
+    opacity: 0;
+  }
+
+  &.enterActive {
+    opacity: 1;
+
+    transition: opacity var(--transition-duration) $default-ease;
+  }
+
+  &.exit {
+    opacity: 1;
+  }
+
+  &.exitActive {
+    opacity: 0;
+
+    transition: opacity var(--transition-duration) $default-ease;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition-duration: 1ms;
+    }
+  }
+
+  &__backdrop {
+    @include fit(fixed);
+
+    inline-size: 100%;
+    min-block-size: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__inner {
+    position: relative;
+
+    inline-size: 80vw;
+    max-inline-size: 100%;
+    max-block-size: 100%;
+
+    overflow: auto;
+
+    background-color: var(--color-background);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    > button {
+      min-inline-size: 40px;
+      min-block-size: 40px;
+    }
+  }
+}

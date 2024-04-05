@@ -1,0 +1,32 @@
+@import 'styles/config';
+
+.loading {
+  @include fit(fixed);
+  contain: strict;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: $zindex-header + 1;
+
+  user-select: none;
+  pointer-events: none;
+
+  opacity: 0;
+
+  background: var(--color-background);
+
+  transition: opacity $transition-duration $default-ease;
+
+  &.exited,
+  &.entering {
+    opacity: 0;
+  }
+
+  &.entered {
+    opacity: 1;
+
+    transition: opacity $transition-duration $default-ease 1500ms;
+  }
+}

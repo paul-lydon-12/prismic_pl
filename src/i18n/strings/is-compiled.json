@@ -1,0 +1,56 @@
+{
+  "close": [
+    {
+      "type": 0,
+      "value": "Loka"
+    }
+  ],
+  "close_menu": [
+    {
+      "type": 0,
+      "value": "Loka valmynd"
+    }
+  ],
+  "frontpage": [
+    {
+      "type": 0,
+      "value": "Forsíða"
+    }
+  ],
+  "menu": [
+    {
+      "type": 0,
+      "value": "Valmynd"
+    }
+  ],
+  "next_page": [
+    {
+      "type": 0,
+      "value": "Næsta síða"
+    }
+  ],
+  "page_not_found": [
+    {
+      "type": 0,
+      "value": "Síða fannst ekki"
+    }
+  ],
+  "prev_page": [
+    {
+      "type": 0,
+      "value": "Fyrri síða"
+    }
+  ],
+  "read_more": [
+    {
+      "type": 0,
+      "value": "Lesa meira"
+    }
+  ],
+  "skip_to_content": [
+    {
+      "type": 0,
+      "value": "Beint í efni"
+    }
+  ]
+}

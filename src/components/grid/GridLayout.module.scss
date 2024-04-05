@@ -1,0 +1,41 @@
+// parent(s) for <GridLayoutItem />
+@import 'styles/config';
+
+.gridLayout {
+  @include grid;
+
+  &__item {
+    @include grid-item;
+
+    .debug & {
+      border: 1px dotted #c00;
+    }
+  }
+
+  // map over each breakpoint to create grid-item classes
+  @each $name, $breakpoint in $ui-breakpoints {
+    @media (min-width: $breakpoint) {
+      @for $i from 0 through $grid-column-count {
+        @if $i == 0 {
+          .#{$name}Offset0 {
+            grid-column-end: span $grid-column-count;
+          }
+        } @else {
+          .#{$name}#{$i} {
+            grid-column-end: span #{$i};
+          }
+        }
+
+        @if $i == 0 {
+          .#{$name}Offset0 {
+            grid-column-start: auto;
+          }
+        } @else {
+          .#{$name}Offset#{$i} {
+            grid-column-start: #{$i + 1};
+          }
+        }
+      }
+    }
+  }
+}

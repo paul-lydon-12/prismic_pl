@@ -1,0 +1,27 @@
+@import 'styles/config';
+
+// items in an equal-column <Grid />
+.grid {
+  --cols: 1;
+
+  display: grid;
+  gap: var(--gutter);
+  grid-template-rows: auto;
+  grid-template-columns: repeat(var(--cols, var(--cols-mobile)), minmax(0, 1fr));
+
+  &.container {
+    @include container;
+  }
+
+  @media (min-width: $min-tablet) {
+    --cols: var(--cols-tablet, 2);
+  }
+
+  @media (min-width: $min-desktop) {
+    --cols: var(--cols-desktop, 3);
+  }
+
+  @media (min-width: $min-wide) {
+    --cols: var(--cols-wide, var(--cols-desktop, 3));
+  }
+}

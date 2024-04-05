@@ -1,0 +1,29 @@
+{
+  "close": {
+    "defaultMessage": "Loka"
+  },
+  "close_menu": {
+    "defaultMessage": "Loka valmynd"
+  },
+  "frontpage": {
+    "defaultMessage": "Forsíða"
+  },
+  "menu": {
+    "defaultMessage": "Valmynd"
+  },
+  "next_page": {
+    "defaultMessage": "Næsta síða"
+  },
+  "page_not_found": {
+    "defaultMessage": "Síða fannst ekki"
+  },
+  "prev_page": {
+    "defaultMessage": "Fyrri síða"
+  },
+  "read_more": {
+    "defaultMessage": "Lesa meira"
+  },
+  "skip_to_content": {
+    "defaultMessage": "Beint í efni"
+  }
+}

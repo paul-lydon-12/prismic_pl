@@ -1,0 +1,86 @@
+// GRID as css grid
+
+// parent grid to layout items along a grid
+@mixin grid($grid-count: $grid-column-count, $container: true, $align: flex-start) {
+  @if ($container == true) {
+    @include container;
+  }
+  // linear until $min-mobile, gives space for gap to not overflow
+  display: grid;
+  align-items: $align;
+  column-gap: var(--gutter);
+  grid-auto-rows: min-content;
+  grid-template-columns: repeat($grid-count, minmax(0, 1fr));
+
+  flex: none;
+
+  @if ($container == false) {
+    inline-size: 100%;
+  }
+}
+
+// individual column. use @include grid-item(5) where number = column span
+@mixin grid-item($columns: 0, $offset: 0, $column-count: $grid-column-count) {
+  @if ($columns > 0) {
+    @if ($columns > $column-count or $columns + $offset > $column-count) {
+      grid-column: 1 / -1;
+    } @else {
+      @if ($offset > 0) {
+        grid-column-start: $offset + 1;
+        grid-column-end: span $columns;
+      } @else {
+        grid-column-start: auto;
+        grid-column-end: span $columns;
+      }
+    }
+  } @else {
+    grid-column-start: auto;
+    grid-column-end: span $grid-column-count;
+  }
+}
+
+// for nested in-grid flexible-grid using flexbox
+// emergencies only, try not to use this
+@mixin flex-grid(
+  $direction: ltr,
+  $align: stretch,
+  $justify: flex-start,
+  $grid-gutter: $gutter,
+  $wrap: wrap
+) {
+  display: flex;
+  flex-wrap: $wrap;
+
+  align-items: $align;
+  justify-content: $justify;
+
+  margin-inline: calc(var(--gutter) * -0.5);
+
+  @if $direction == ltr {
+    flex-direction: row;
+  } @else {
+    flex-direction: row-reverse;
+  }
+}
+
+// flex-grid item
+@mixin flex-grid-item(
+  $width: $grid-column-count,
+  $align: stretch,
+  $grid-gutter: $gutter
+) {
+  flex: none;
+  align-self: $align;
+
+  padding-inline: calc(var(--gutter) * 0.5);
+
+  inline-size: make-percentage($width, $grid-column-count);
+}
+
+@mixin grid-offset-left($offset: 1) {
+  margin-inline-start: make-percentage($offset, $grid-column-count);
+}
+
+@mixin grid-offset-right($offset: 1) {
+  margin-inline-end: make-percentage($offset, $grid-column-count);
+}

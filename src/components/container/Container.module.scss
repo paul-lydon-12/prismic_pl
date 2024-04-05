@@ -1,0 +1,9 @@
+@import 'styles/config';
+
+.container {
+  @include container;
+
+  > .container {
+    inline-size: 100%;
+  }
+}

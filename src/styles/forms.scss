@@ -1,0 +1,92 @@
+/* global generic form styles */
+@mixin input-defaults {
+  display: inline-block;
+
+  padding-inline: 0.5ch;
+  padding-block: 0;
+
+  border: 1px solid var(--color-border);
+
+  @if variable-exists(input-height) {
+    display: inline-flex;
+    align-items: center;
+
+    block-size: $input-height;
+  }
+
+  &:disabled {
+    color: var(--color-disabled, rgba($color-font, 0.6));
+  }
+}
+
+select {
+  @include input-defaults;
+  // appearance: none will fix safari overkill styles if required
+  // will need to add a select indicator if so
+}
+
+textarea {
+  border: 1px solid var(--color-border);
+}
+
+// reset styles for all text-type inputs
+textarea,
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='search'],
+input[type='tel'],
+input[type='text'],
+input[type='time'],
+input[type='url'],
+input[type='week'],
+input[list] {
+  appearance: none;
+}
+
+input,
+textarea,
+select {
+  &::placeholder {
+    opacity: 1;
+
+    color: var(--color-placeholder);
+  }
+}
+
+// loop over input "text-ish" types and set sane defaults
+@each $input in $input-types {
+  input[type='#{$input}'] {
+    @include input-defaults;
+  }
+}
+
+input[list] {
+  @include input-defaults;
+}
+
+input[type='button'] {
+  appearance: none;
+}
+
+input[type='color'] {
+  padding: 0;
+
+  border: none;
+
+  &::-webkit-color-swatch {
+    border: 1px solid var(--color-border);
+  }
+
+  @if variable-exists(input-height) {
+    block-size: $input-height;
+    inline-size: $input-height;
+  }
+}
+
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}

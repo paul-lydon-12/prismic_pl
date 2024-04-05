@@ -1,0 +1,46 @@
+@import '~styles/config';
+
+.button {
+  appearance: none;
+  display: flex;
+  align-items: center;
+
+  // dont stretch buttons by default
+  align-self: flex-start;
+  justify-content: center;
+  justify-self: flex-start;
+
+  padding-block: calc(var(--gutter) * 0.5);
+  padding-inline: var(--gutter);
+
+  inline-size: fit-content;
+
+  text-decoration: none;
+
+  background-color: var(--color-primary);
+  color: var(--color-font-contrast);
+
+  @if variable-exists(button-width) {
+    min-inline-size: min(100%, #{$button-width});
+
+    @if variable-exists(button-max-width) {
+      max-inline-size: $button-max-width;
+    }
+  }
+
+  @if variable-exists(button-height) {
+    min-block-size: $button-height;
+  }
+
+  @if variable-exists(font-size-button-min) and variable-exists(font-size-button) {
+    font-size: responsive-font($font-size-button-min, $font-size-button);
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+
+    opacity: 0.6;
+  }
+}

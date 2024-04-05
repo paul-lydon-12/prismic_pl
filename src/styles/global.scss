@@ -1,0 +1,135 @@
+// PROJECT-SPECIFIC global css should go here
+@import 'reset';
+@import 'config';
+
+// global form styles imported separately
+@import 'forms';
+
+:root {
+  // LAYOUT
+  --container-gutter: clamp(#{$container-gutter-min}, 5vw, #{$container-gutter});
+  --content-width: min(
+    (100vw - var(--container-gutter) * 2) - var(--scrollbar-width),
+    #{$page-width}
+  );
+
+  //  viewport-based container-gutter (i.e distance from edge of container to edge of viewport)
+  --viewport-container-gutter: #{$viewport-container-gutter};
+  // bleeding to edge of viewport from inside a grid layout item:
+  --bleed-width: calc(100% + var(--viewport-container-gutter));
+
+  --gutter: 0px;
+
+  // no gutters until > mobile
+  // if you want the absolute value, then use $gutter
+  @media (min-width: $min-mobile) {
+    --gutter: #{$gutter};
+  }
+
+  --scrollbar-width: 0px;
+  --viewport-height: 100vh;
+  @supports (height: 100svh) {
+    --viewport-height: 100svh;
+  }
+
+  // ANIMATION / TRANSITION
+  --default-ease: #{$default-ease};
+  --transition-duration: #{$transition-duration};
+
+  // COLORS
+  @if variable-exists(color-backdrop) {
+    --color-backdrop: #{$color-backdrop};
+  }
+
+  --color-background: #{$color-background};
+  --color-border: #{$color-border};
+  --color-font: #{$color-font};
+  --color-link: #{$color-link};
+  --color-primary: #{$color-primary};
+
+  --font-size-default: #{responsive-font($font-size-min, $font-size)};
+
+  @if variable-exists(color-secondary) {
+    --color-secondary: #{$color-secondary};
+  }
+
+  @if variable-exists(color-font-contrast) {
+    --color-font-contrast: #{$color-font-contrast};
+  }
+
+  @if variable-exists(color-placeholder) {
+    --color-placeholder: #{$color-placeholder};
+  }
+
+  @if variable-exists(header-height-mobile) {
+    --header-height: #{$header-height-mobile};
+  }
+
+  @media (min-width: $min-desktop) {
+    @if variable-exists(header-height) {
+      --header-height: #{$header-height};
+    }
+  }
+
+  // DARK MODE
+  @media (prefers-color-scheme: dark) {
+    @if variable-exists(color-background-dark-mode) {
+      --color-background: #{$color-background-dark-mode};
+    }
+
+    @if variable-exists(color-font-dark-mode) {
+      --color-font: #{$color-font-dark-mode};
+    }
+
+    @if variable-exists(color-link-dark-mode) {
+      --color-link: #{$color-link-dark-mode};
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    --transition-duration: 1ms;
+  }
+}
+
+html {
+  @mixin html-overflow-hidden {
+    overflow-y: hidden;
+
+    body {
+      touch-action: none;
+
+      @supports not (scrollbar-gutter: stable) {
+        padding-inline-end: var(--scrollbar-width);
+      }
+    }
+  }
+
+  scrollbar-gutter: stable;
+
+  color: var(--color-font);
+  background: var(--color-background);
+
+  &.scroll-disabled {
+    // if nav is open
+    @include html-overflow-hidden;
+  }
+
+  &.nav-open {
+    @media (max-width: $max-desktop) {
+      @include html-overflow-hidden;
+    }
+  }
+}
+
+body {
+  // local setup, see pages/_app.tsx
+  // for fallback cascade possible mismatch,
+  // i.e. possible overriding of --font-family in jsx in a feature query
+  font-family: var(--font-family);
+  font-size: var(--font-size-default);
+  line-height: $line-height;
+}
+
+hr {
+  border-color: var(--color-border);
+}

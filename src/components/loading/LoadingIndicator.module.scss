@@ -1,0 +1,33 @@
+@import 'styles/config';
+
+.loadingIndicator {
+  position: relative;
+
+  margin: auto;
+
+  inline-size: var(--loading-indicator-size, 60px);
+  block-size: var(--loading-indicator-size, 60px);
+
+  overflow: hidden;
+
+  border: var(--loading-indicator-border-width, 8px) solid
+    var(--loading-indicator-color-secondary, #{rgba($color-primary, 0.2)});
+  border-inline-start: var(--loading-indicator-border-width, 8px) solid
+    var(--loading-indicator-color-primary, var(--color-primary));
+  border-radius: 50%;
+
+  text-indent: calc(100% + 1em);
+  white-space: nowrap;
+
+  transform: translateZ(0);
+
+  animation: loading 1s infinite linear;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

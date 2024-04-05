@@ -1,0 +1,33 @@
+@import 'styles/config';
+
+.bleed {
+  position: relative;
+
+  &__bleedWrap {
+    direction: rtl;
+  }
+
+  &__bleedWidth {
+    // reset direction if parent sets it as something other than default
+    direction: initial;
+
+    padding-block: section-spacing(30, 50);
+    padding-inline: 20px;
+
+    inline-size: var(--bleed-width);
+
+    border-left: 10px solid red;
+
+    background-color: #0c0;
+  }
+
+  &__containerMargin {
+    padding-block: section-spacing(30, 50);
+    padding-inline: 20px;
+    margin-inline-end: calc(var(--viewport-container-gutter) * -1);
+
+    border-inline-end: 10px solid blue;
+
+    background-color: orange;
+  }
+}

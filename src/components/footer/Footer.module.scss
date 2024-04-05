@@ -1,0 +1,11 @@
+@import 'styles/config';
+
+.footer {
+  position: sticky;
+  inset-block-start: 100vh;
+
+  padding-block-start: section-spacing(30, 60);
+  padding-block-end: section-spacing(30, 60);
+
+  background: var(--color-secondary, var(--color-background));
+}

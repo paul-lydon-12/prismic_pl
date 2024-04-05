@@ -1,0 +1,27 @@
+// .gitnignore
+# next.js build output
+.next
+_next/*
+.swc
+# dotenv environment variables file (build for Zeit Now)
+.env
+.env.build
+# Dependency directories
+node_modules/
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.zip
+.DS_Store
+
+# People can opt-in to how they want their editor to behave
+.vscode/settings.json
+
+coverage/
+
+# Slicemachine cruft
+prismicio-types.d.ts
+customtypes/**/mocks.json
+src/prismic/slices/**/mocks.json

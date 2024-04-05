@@ -1,0 +1,56 @@
+{
+  "close": [
+    {
+      "type": 0,
+      "value": "Loka"
+    }
+  ],
+  "close_menu": [
+    {
+      "type": 0,
+      "value": "Close menu"
+    }
+  ],
+  "frontpage": [
+    {
+      "type": 0,
+      "value": "Frontpage"
+    }
+  ],
+  "menu": [
+    {
+      "type": 0,
+      "value": "Menu"
+    }
+  ],
+  "next_page": [
+    {
+      "type": 0,
+      "value": "Next page"
+    }
+  ],
+  "page_not_found": [
+    {
+      "type": 0,
+      "value": "Page not found"
+    }
+  ],
+  "prev_page": [
+    {
+      "type": 0,
+      "value": "Previous page"
+    }
+  ],
+  "read_more": [
+    {
+      "type": 0,
+      "value": "Read more"
+    }
+  ],
+  "skip_to_content": [
+    {
+      "type": 0,
+      "value": "Skip to content"
+    }
+  ]
+}

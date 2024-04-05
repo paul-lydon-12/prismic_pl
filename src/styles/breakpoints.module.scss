@@ -1,0 +1,33 @@
+// module exports as camelCase JS variables
+
+// COMMON BREAKPOINTS: used for consistent measuring breakpoints
+// also used in <Grid /> component breakpoints
+$min-mobile: 480px;
+$min-tablet: 720px;
+$min-desktop: 1080px;
+$min-wide: 1320px;
+
+$max-mobile: $min-mobile - 0.1px;
+$max-tablet: $min-tablet - 0.1px;
+$max-desktop: $min-desktop - 0.1px;
+$max-wide: $min-wide - 0.1px;
+
+// map for breakpoint values (used in GridItem classnames)
+$ui-breakpoints: (
+  'mobile': $min-mobile,
+  'tablet': $min-tablet,
+  'desktop': $min-desktop,
+  'wide': $min-wide,
+);
+
+:export {
+  mobile: $min-mobile;
+  tablet: $min-tablet;
+  desktop: $min-desktop;
+  wide: $min-wide;
+
+  maxMobile: $max-mobile;
+  maxTablet: $max-tablet;
+  maxDesktop: $max-desktop;
+  maxWide: $max-wide;
+}

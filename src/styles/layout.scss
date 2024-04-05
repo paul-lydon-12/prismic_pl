@@ -1,0 +1,23 @@
+// <Section>: full-width; top & bottom padding for a section component
+@function section-spacing($min: $section-padding-mobile, $max: $section-padding) {
+  $min-value: strip-unit($min);
+  $max-value: strip-unit($max);
+  $multiplier: math.div(($max-value), strip-unit($page-width));
+  $clamp: min(#{$multiplier * 150}vh, #{$multiplier * 100}vw);
+
+  @return clamp(#{$min-value * 1px}, #{$clamp}, #{$max-value * 1px});
+}
+
+@mixin container($fluid: false) {
+  $width: calc(100% - (var(--container-gutter) * 2));
+
+  flex: none;
+
+  margin-inline: auto;
+
+  @if ($fluid == true) {
+    inline-size: $width;
+  } @else {
+    inline-size: min(#{$width}, #{$page-width});
+  }
+}

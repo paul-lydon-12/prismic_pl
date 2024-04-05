@@ -1,0 +1,23 @@
+@import 'styles/config';
+
+.section {
+  $section-padding-default: section-spacing();
+
+  // --section-padding-*-adjusted = value passed from a container, ie an <Article /> wrapper
+  --section-padding-start: var(
+    --section-padding-start-adjusted,
+    #{$section-padding-default}
+  );
+  --section-padding-end: var(--section-padding-end-adjusted, #{$section-padding-default});
+
+  padding-block-start: var(--section-padding-start);
+  padding-block-end: var(--section-padding-end);
+
+  &:empty {
+    display: none;
+  }
+
+  & + & {
+    padding-block-start: 0;
+  }
+}

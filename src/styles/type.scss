@@ -1,0 +1,58 @@
+// all font/type-based mixins
+
+// RESPONSIVE FONT
+
+@function px-to-rem($value) {
+  @return math.div(strip-unit($value), 16) * 1rem;
+}
+
+@function responsive-font(
+  $min-size: $font-size-min,
+  $max-size: $font-size,
+  $viewport-min: $min-mobile,
+  $viewport-max: $min-wide
+) {
+  $fluid: math.div($max-size - $min-size, $viewport-max - $viewport-min);
+  $slope: min($fluid * 100vw, $fluid * 200vh);
+  $intercept: round(px-to-rem($min-size - $fluid * $viewport-min), 4);
+  $min: round(px-to-rem($min-size), 4);
+  $max: round(px-to-rem($max-size), 4);
+
+  @return clamp(#{$min}, #{$slope} + #{$intercept}, #{$max});
+}
+
+@mixin heading($size-min: $h1-size-min, $size: $h1-size) {
+  font-size: responsive-font($size-min, $size);
+  font-family: var(--font-family-heading, var(--font-family));
+  font-weight: 700;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+@mixin h1 {
+  @include heading($h1-size-min, $h1-size);
+}
+
+@mixin h2 {
+  @include heading($h2-size-min, $h2-size);
+}
+
+@mixin h3 {
+  @include heading($h3-size-min, $h3-size);
+}
+
+@mixin h4 {
+  @include heading($h4-size-min, $h4-size);
+}
+
+@mixin h5 {
+  @include heading($h5-size-min, $h5-size);
+
+  line-height: inherit;
+}
+
+@mixin h6 {
+  @include heading($h6-size-min, $h6-size);
+
+  line-height: inherit;
+}
