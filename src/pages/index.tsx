@@ -28,6 +28,7 @@ export default function FrontpageComponent(
 
       <H1>{asText(frontpage.title)}</H1>
       <p><RichText>{frontpage.description}</RichText></p>
+      <p><RichText>{frontpage.description2}</RichText></p>
     </>
   );
 }

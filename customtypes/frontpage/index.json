@@ -31,6 +31,15 @@
           "single": "paragraph,strong,em,hyperlink"
         }
       },
+      "description2": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description2",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

@@ -6,6 +6,7 @@ export const frontpageFragment = /* GraphQL */ `
     }
     title
     description
+    description2
 
     seo_title
     seo_description

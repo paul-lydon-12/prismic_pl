@@ -119,6 +119,7 @@ export type Frontpage = _Document & _Linkable & {
   _linkType?: Maybe<Scalars['String']['output']>;
   _meta: Meta;
   description?: Maybe<Scalars['Json']['output']>;
+  description2?: Maybe<Scalars['Json']['output']>;
   seo_description?: Maybe<Scalars['Json']['output']>;
   seo_image?: Maybe<Scalars['Json']['output']>;
   seo_title?: Maybe<Scalars['Json']['output']>;
@@ -501,6 +502,8 @@ export enum SortDocumentsBy {
 }
 
 export enum SortFrontpagey {
+  Description2Asc = 'description2_ASC',
+  Description2Desc = 'description2_DESC',
   DescriptionAsc = 'description_ASC',
   DescriptionDesc = 'description_DESC',
   MetaFirstPublicationDateAsc = 'meta_firstPublicationDate_ASC',
@@ -563,6 +566,8 @@ export type WhereArticle = {
 };
 
 export type WhereFrontpage = {
+  /** description2 */
+  description2_fulltext?: InputMaybe<Scalars['String']['input']>;
   /** description */
   description_fulltext?: InputMaybe<Scalars['String']['input']>;
   /** seo_description */
