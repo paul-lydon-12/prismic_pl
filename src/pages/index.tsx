@@ -5,7 +5,7 @@ import { frontpageQuery } from 'prismic/queries/frontpageQuery';
 import { layoutDataQuery } from 'prismic/queries/layoutQuery';
 
 import { H1 } from 'components/heading/Heading';
-import { asText } from 'components/rich-text/RichText';
+import { RichText, asText } from 'components/rich-text/RichText';
 import { PrismicMeta } from 'containers/meta/PrismicMeta';
 
 import { query } from 'api/prismic';
@@ -27,6 +27,7 @@ export default function FrontpageComponent(
       <PrismicMeta data={frontpage} layout={data.layout} />
 
       <H1>{asText(frontpage.title)}</H1>
+      <p><RichText>{frontpage.description}</RichText></p>
     </>
   );
 }
@@ -37,6 +38,9 @@ export const getServerSideProps: GetServerSideProps<FrontpageProps> = async ({
   locale,
 }) => {
   const lang = localeToPrismicLocale(locale);
+
+  console.log({lang});
+
 
   const [layoutData, pageData] = await Promise.all([
     layoutDataQuery(lang),
