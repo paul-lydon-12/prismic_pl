@@ -1,6 +1,6 @@
 // @ts-check
 const isDev = process.env.NODE_ENV === 'development';
-const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE || 'en-gb';
+const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE || 'en';
 const redirects = require('./redirects');
 
 // https://nextjs.org/docs/advanced-features/security-headers#content-security-policy
