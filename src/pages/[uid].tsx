@@ -7,7 +7,7 @@ import { layoutDataQuery } from 'prismic/queries/layoutQuery';
 import { pageQuery } from 'prismic/queries/pageQuery';
 
 import { H1 } from 'components/heading/Heading';
-import { asText } from 'components/rich-text/RichText';
+import { RichText, asText } from 'components/rich-text/RichText';
 import { Section } from 'components/section/Section';
 import { PrismicMeta } from 'containers/meta/PrismicMeta';
 
@@ -43,6 +43,9 @@ export default function PageComponent(
 
       <Section>
         <H1>{asText(page.title)}</H1>
+        <div>
+          <RichText>{page.description}</RichText>
+        </div>
       </Section>
     </>
   );
