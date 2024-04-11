@@ -304,6 +304,37 @@ export type PageSlicesVideoDefaultPrimary = {
 
 export type PageSlicesVideoVariation = PageSlicesVideoDefault;
 
+export type Project = _Document & _Linkable & {
+  __typename?: 'Project';
+  _linkType?: Maybe<Scalars['String']['output']>;
+  _meta: Meta;
+  description?: Maybe<Scalars['Json']['output']>;
+  externallink?: Maybe<_Linkable>;
+  meta_description?: Maybe<Scalars['String']['output']>;
+  meta_image?: Maybe<Scalars['Json']['output']>;
+  meta_title?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['Json']['output']>;
+};
+
+/** A connection to a list of items. */
+export type ProjectConnectionConnection = {
+  __typename?: 'ProjectConnectionConnection';
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<ProjectConnectionEdge>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  totalCount: Scalars['Long']['output'];
+};
+
+/** An edge in a connection. */
+export type ProjectConnectionEdge = {
+  __typename?: 'ProjectConnectionEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node: Project;
+};
+
 export type Query = {
   __typename?: 'Query';
   _allDocuments: _DocumentConnection;
@@ -311,10 +342,12 @@ export type Query = {
   allFrontpages: FrontpageConnectionConnection;
   allLayouts: LayoutConnectionConnection;
   allPages: PageConnectionConnection;
+  allProjects: ProjectConnectionConnection;
   article?: Maybe<Article>;
   frontpage?: Maybe<Frontpage>;
   layout?: Maybe<Layout>;
   page?: Maybe<Page>;
+  project?: Maybe<Project>;
 };
 
 
@@ -442,6 +475,31 @@ export type QueryAllPagesArgs = {
 };
 
 
+export type QueryAllProjectsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  firstPublicationDate?: InputMaybe<Scalars['DateTime']['input']>;
+  firstPublicationDate_after?: InputMaybe<Scalars['DateTime']['input']>;
+  firstPublicationDate_before?: InputMaybe<Scalars['DateTime']['input']>;
+  fulltext?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  id_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  lang?: InputMaybe<Scalars['String']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  lastPublicationDate?: InputMaybe<Scalars['DateTime']['input']>;
+  lastPublicationDate_after?: InputMaybe<Scalars['DateTime']['input']>;
+  lastPublicationDate_before?: InputMaybe<Scalars['DateTime']['input']>;
+  similar?: InputMaybe<Similar>;
+  sortBy?: InputMaybe<SortProjecty>;
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
+  tags_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  uid?: InputMaybe<Scalars['String']['input']>;
+  uid_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  where?: InputMaybe<WhereProject>;
+};
+
+
 export type QueryArticleArgs = {
   lang: Scalars['String']['input'];
   uid: Scalars['String']['input'];
@@ -461,6 +519,12 @@ export type QueryLayoutArgs = {
 
 
 export type QueryPageArgs = {
+  lang: Scalars['String']['input'];
+  uid: Scalars['String']['input'];
+};
+
+
+export type QueryProjectArgs = {
   lang: Scalars['String']['input'];
   uid: Scalars['String']['input'];
 };
@@ -548,6 +612,21 @@ export enum SortPagey {
   TitleDesc = 'title_DESC'
 }
 
+export enum SortProjecty {
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  MetaDescriptionAsc = 'meta_description_ASC',
+  MetaDescriptionDesc = 'meta_description_DESC',
+  MetaFirstPublicationDateAsc = 'meta_firstPublicationDate_ASC',
+  MetaFirstPublicationDateDesc = 'meta_firstPublicationDate_DESC',
+  MetaLastPublicationDateAsc = 'meta_lastPublicationDate_ASC',
+  MetaLastPublicationDateDesc = 'meta_lastPublicationDate_DESC',
+  MetaTitleAsc = 'meta_title_ASC',
+  MetaTitleDesc = 'meta_title_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
 export type WhereArticle = {
   /** description */
   description_fulltext?: InputMaybe<Scalars['String']['input']>;
@@ -597,6 +676,19 @@ export type WherePage = {
   seo_description_fulltext?: InputMaybe<Scalars['String']['input']>;
   /** seo_title */
   seo_title_fulltext?: InputMaybe<Scalars['String']['input']>;
+  /** title */
+  title_fulltext?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type WhereProject = {
+  /** description */
+  description_fulltext?: InputMaybe<Scalars['String']['input']>;
+  /** externallink */
+  externallink?: InputMaybe<Scalars['String']['input']>;
+  meta_description?: InputMaybe<Scalars['String']['input']>;
+  meta_description_fulltext?: InputMaybe<Scalars['String']['input']>;
+  meta_title?: InputMaybe<Scalars['String']['input']>;
+  meta_title_fulltext?: InputMaybe<Scalars['String']['input']>;
   /** title */
   title_fulltext?: InputMaybe<Scalars['String']['input']>;
 };
