@@ -67,6 +67,8 @@ export function linkResolverByType(type?: string, uid?: string, locale?: string)
       return `${localeString}${uid}`;
     case 'article':
       return `${localeString}frettir/${uid}`;
+    case 'project':
+      return `${localeString}verkefni/${uid}`;
     default:
       return localeString;
   }
