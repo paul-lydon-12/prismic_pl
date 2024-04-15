@@ -310,9 +310,9 @@ export type Project = _Document & _Linkable & {
   _meta: Meta;
   description?: Maybe<Scalars['Json']['output']>;
   externallink?: Maybe<_Linkable>;
-  meta_description?: Maybe<Scalars['String']['output']>;
-  meta_image?: Maybe<Scalars['Json']['output']>;
-  meta_title?: Maybe<Scalars['String']['output']>;
+  seo_description?: Maybe<Scalars['String']['output']>;
+  seo_image?: Maybe<Scalars['Json']['output']>;
+  seo_title?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['Json']['output']>;
 };
 
@@ -615,14 +615,14 @@ export enum SortPagey {
 export enum SortProjecty {
   DescriptionAsc = 'description_ASC',
   DescriptionDesc = 'description_DESC',
-  MetaDescriptionAsc = 'meta_description_ASC',
-  MetaDescriptionDesc = 'meta_description_DESC',
   MetaFirstPublicationDateAsc = 'meta_firstPublicationDate_ASC',
   MetaFirstPublicationDateDesc = 'meta_firstPublicationDate_DESC',
   MetaLastPublicationDateAsc = 'meta_lastPublicationDate_ASC',
   MetaLastPublicationDateDesc = 'meta_lastPublicationDate_DESC',
-  MetaTitleAsc = 'meta_title_ASC',
-  MetaTitleDesc = 'meta_title_DESC',
+  SeoDescriptionAsc = 'seo_description_ASC',
+  SeoDescriptionDesc = 'seo_description_DESC',
+  SeoTitleAsc = 'seo_title_ASC',
+  SeoTitleDesc = 'seo_title_DESC',
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC'
 }
@@ -685,10 +685,10 @@ export type WhereProject = {
   description_fulltext?: InputMaybe<Scalars['String']['input']>;
   /** externallink */
   externallink?: InputMaybe<Scalars['String']['input']>;
-  meta_description?: InputMaybe<Scalars['String']['input']>;
-  meta_description_fulltext?: InputMaybe<Scalars['String']['input']>;
-  meta_title?: InputMaybe<Scalars['String']['input']>;
-  meta_title_fulltext?: InputMaybe<Scalars['String']['input']>;
+  seo_description?: InputMaybe<Scalars['String']['input']>;
+  seo_description_fulltext?: InputMaybe<Scalars['String']['input']>;
+  seo_title?: InputMaybe<Scalars['String']['input']>;
+  seo_title_fulltext?: InputMaybe<Scalars['String']['input']>;
   /** title */
   title_fulltext?: InputMaybe<Scalars['String']['input']>;
 };
