@@ -6,7 +6,9 @@ export const projectFragment = /* GraphQL */ `
     }
     title
     description
-    externallink
+    externallink {
+      ...linkable
+    }
 
     seo_title
     seo_description
