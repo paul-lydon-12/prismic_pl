@@ -309,7 +309,7 @@ export type Project = _Document & _Linkable & {
   _linkType?: Maybe<Scalars['String']['output']>;
   _meta: Meta;
   description?: Maybe<Scalars['Json']['output']>;
-  externallink?: Maybe<_Linkable>;
+  externalplanetlink?: Maybe<_Linkable>;
   seo_description?: Maybe<Scalars['String']['output']>;
   seo_image?: Maybe<Scalars['Json']['output']>;
   seo_title?: Maybe<Scalars['String']['output']>;
@@ -683,8 +683,8 @@ export type WherePage = {
 export type WhereProject = {
   /** description */
   description_fulltext?: InputMaybe<Scalars['String']['input']>;
-  /** externallink */
-  externallink?: InputMaybe<Scalars['String']['input']>;
+  /** externalplanetlink */
+  externalplanetlink?: InputMaybe<Scalars['String']['input']>;
   seo_description?: InputMaybe<Scalars['String']['input']>;
   seo_description_fulltext?: InputMaybe<Scalars['String']['input']>;
   seo_title?: InputMaybe<Scalars['String']['input']>;

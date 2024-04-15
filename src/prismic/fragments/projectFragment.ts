@@ -6,7 +6,7 @@ export const projectFragment = /* GraphQL */ `
     }
     title
     description
-    externallink {
+    externalplanetlink {
       ...linkable
     }
 
