@@ -38,7 +38,7 @@ export default function ProjectsPage(
   const router = useRouter();
 
   if (projects.length === 0) {
-    return <>empty</>;
+    return <>empty ... ...</>;
   }
 
   const hasPreviousPage =
@@ -51,7 +51,8 @@ export default function ProjectsPage(
   return (
     <>
       <PrismicMeta layout={data.layout} />
-
+      
+      <div><p>verkefni - xx</p></div>
       <Section>
         <ul>
           {projects.map((item, i) => (
@@ -115,6 +116,8 @@ export const getServerSideProps: GetServerSideProps<ProjectsProps> = async ({
     .map((i) => i?.node ?? null)
     .filter(Boolean as unknown as ExcludesFalse);
   const layout = layoutData?.layout ?? null;
+
+  console.log(layout, projects, ' sdf')
 
   return {
     props: {
