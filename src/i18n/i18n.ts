@@ -15,7 +15,7 @@ export function mapStringToSiteLocale(input?: string | null): SiteLocale {
   const l = (input ?? '').toLowerCase();
 
   if (l === 'en' || l === 'en-us' || l === 'en-gb') {
-    return 'en-gb';
+    return 'en';
   }
 
   return 'is';
