@@ -25,15 +25,12 @@ export default function FrontpageComponent(
   return (
     <>
       <PrismicMeta data={frontpage} layout={data.layout} />
-
-      <H1>{asText(frontpage.title)}</H1>
       <div>
-        <p>
-          <RichText>{frontpage.description}</RichText>
-        </p>
-        <p>
-          <RichText>{frontpage.description2}</RichText>
-        </p>
+        <H1>{asText(frontpage.title)}</H1>
+        <div>
+            <RichText>{frontpage.description}</RichText>
+            <RichText>{frontpage.description2}</RichText>
+        </div>
       </div>
     </>
   );
