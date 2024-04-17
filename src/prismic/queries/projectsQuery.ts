@@ -1,4 +1,4 @@
-import { projectFragment } from 'prismic/fragments/projectFragment';
+import { projectsFragment } from 'prismic/fragments/projectsFragment';
 import { metaFragment } from 'prismic/fragments/metaFragment';
 import { linkableFragment } from 'prismic/fragments/linkableFragment';
 
@@ -21,6 +21,6 @@ export const projectsQuery = /* GraphQL */ `
     }
   }
   ${metaFragment}
-  ${projectFragment}
+  ${projectsFragment}
   ${linkableFragment}
 `;
