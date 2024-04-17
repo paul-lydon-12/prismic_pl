@@ -9,6 +9,7 @@ export const projectFragment = /* GraphQL */ `
     externalplanetlink {
       ...linkable
     }
+    image
 
     seo_title
     seo_description
