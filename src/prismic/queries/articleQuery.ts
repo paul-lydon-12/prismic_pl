@@ -21,6 +21,5 @@ export const articleQuery = /* GraphQL */ `
   }
   ${articleFragment}
   ${metaFragment}
-  ${linkableFragment}
   ${articleSlices}
 `;
