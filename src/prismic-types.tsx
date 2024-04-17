@@ -310,6 +310,7 @@ export type Project = _Document & _Linkable & {
   _meta: Meta;
   description?: Maybe<Scalars['Json']['output']>;
   externalplanetlink?: Maybe<_Linkable>;
+  image?: Maybe<Scalars['Json']['output']>;
   seo_description?: Maybe<Scalars['String']['output']>;
   seo_image?: Maybe<Scalars['Json']['output']>;
   seo_title?: Maybe<Scalars['String']['output']>;
