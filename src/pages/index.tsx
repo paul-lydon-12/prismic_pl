@@ -10,6 +10,7 @@ import { PrismicMeta } from 'containers/meta/PrismicMeta';
 
 import { query } from 'api/prismic';
 import { localeToPrismicLocale } from 'i18n/i18n';
+import { Button } from 'components/button/Button';
 
 export type FrontpageProps = {
   preview?: boolean;
@@ -25,6 +26,7 @@ export default function FrontpageComponent(
   return (
     <>
       <PrismicMeta data={frontpage} layout={data.layout} />
+      <Button showHeading={true}>Helló</Button>
       <div>
         <H1>{asText(frontpage.title)}</H1>
         <div>

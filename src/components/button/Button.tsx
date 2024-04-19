@@ -11,6 +11,7 @@ type ButtonDefaults = {
   children: React.ReactNode;
   className?: string;
   transition?: boolean;
+  showHeading?: boolean;
 };
 
 type ButtonLinkProps = {
@@ -36,9 +37,12 @@ export const Button = ({
   className,
   disabled,
   transition,
+  showHeading,
   ...props
 }: ButtonProps) => {
   const classNames = c(className, s.button, { disabled });
+
+  showHeading ? <p>Show heading</p> : <p>Not show</p>
 
   if (to) {
     return (
