@@ -18,6 +18,7 @@ import { query } from 'api/prismic';
 import { localeToPrismicLocale } from 'i18n/i18n';
 import { ExcludesFalse } from 'utils/excludesFalse';
 import { getStringFromQueryString } from 'utils/queryString';
+import { Picture } from 'components/picture/Picture';
 
 export type ProjectProps = {
   preview: boolean;
@@ -34,6 +35,8 @@ export default function ProjectComponent(
   const project = data.project ?? null;
   const related = data.related;
 
+  console.log('========' , project)
+  
   if (!project) {
     return null;
   }
@@ -48,6 +51,15 @@ export default function ProjectComponent(
         <Section>
           <H1>{asText(project.title)}</H1>
           <RichText>{project.description}</RichText>
+
+          { project.image && (
+          <Picture
+            className="picture"
+            src={project.image?.url}
+            width={480}
+            height={270}
+          /> 
+          )}
         </Section>
 
 
