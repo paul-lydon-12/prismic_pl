@@ -36,7 +36,7 @@ export default function ProjectComponent(
   const related = data.related;
 
   console.log('========' , project)
-  
+
   if (!project) {
     return null;
   }
@@ -50,7 +50,11 @@ export default function ProjectComponent(
       <article>
         <Section>
           <H1>{asText(project.title)}</H1>
+          <p>Hér fyrir neðan eru gögn sett fram sem strengur</p>
+          {asText(project.description)}
+          <p>Hér fyrir neðan eru gögn sett fram sem richt text (styður bold, italic etc sem að er sett upp í prismic)</p>
           <RichText>{project.description}</RichText>
+          <Link to={linkResolver(project.externalplanetlink)}>Hlekkur á mig</Link>
 
           { project.image && (
           <Picture
