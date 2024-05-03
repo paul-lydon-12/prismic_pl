@@ -11,6 +11,7 @@ import { PrismicMeta } from 'containers/meta/PrismicMeta';
 import { query } from 'api/prismic';
 import { localeToPrismicLocale } from 'i18n/i18n';
 import { Button } from 'components/button/Button';
+import Tel24 from 'assets/svg/tel24.svg';
 
 export type FrontpageProps = {
   preview?: boolean;
@@ -32,6 +33,7 @@ export default function FrontpageComponent(
         <div>
             <RichText>{frontpage.description}</RichText>
             <RichText>{frontpage.description2}</RichText>
+            <Tel24 title="Tel24" />
         </div>
       </div>
     </>
