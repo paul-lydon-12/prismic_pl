@@ -2,6 +2,11 @@
 const isDev = process.env.NODE_ENV === 'development';
 const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE || 'en';
 const redirects = require('./redirects');
+const path = require('path');
+const svgDir = path.resolve(__dirname, 'src/assets/svg');
+const withReactSvg = require('next-react-svg')({
+  include: svgDir,
+});
 
 // https://nextjs.org/docs/advanced-features/security-headers#content-security-policy
 const ContentSecurityPolicy = `
@@ -90,3 +95,4 @@ if (process.env.ANALYZE === 'true') {
 } else {
   module.exports = nextConfig;
 }
+module.exports = withReactSvg(nextConfig);
