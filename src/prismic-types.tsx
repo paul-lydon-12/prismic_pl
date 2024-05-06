@@ -344,11 +344,13 @@ export type Query = {
   allLayouts: LayoutConnectionConnection;
   allPages: PageConnectionConnection;
   allProjects: ProjectConnectionConnection;
+  allStars: StarConnectionConnection;
   article?: Maybe<Article>;
   frontpage?: Maybe<Frontpage>;
   layout?: Maybe<Layout>;
   page?: Maybe<Page>;
   project?: Maybe<Project>;
+  star?: Maybe<Star>;
 };
 
 
@@ -501,6 +503,31 @@ export type QueryAllProjectsArgs = {
 };
 
 
+export type QueryAllStarsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  firstPublicationDate?: InputMaybe<Scalars['DateTime']['input']>;
+  firstPublicationDate_after?: InputMaybe<Scalars['DateTime']['input']>;
+  firstPublicationDate_before?: InputMaybe<Scalars['DateTime']['input']>;
+  fulltext?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  id_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  lang?: InputMaybe<Scalars['String']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  lastPublicationDate?: InputMaybe<Scalars['DateTime']['input']>;
+  lastPublicationDate_after?: InputMaybe<Scalars['DateTime']['input']>;
+  lastPublicationDate_before?: InputMaybe<Scalars['DateTime']['input']>;
+  similar?: InputMaybe<Similar>;
+  sortBy?: InputMaybe<SortStary>;
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
+  tags_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  uid?: InputMaybe<Scalars['String']['input']>;
+  uid_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  where?: InputMaybe<WhereStar>;
+};
+
+
 export type QueryArticleArgs = {
   lang: Scalars['String']['input'];
   uid: Scalars['String']['input'];
@@ -526,6 +553,12 @@ export type QueryPageArgs = {
 
 
 export type QueryProjectArgs = {
+  lang: Scalars['String']['input'];
+  uid: Scalars['String']['input'];
+};
+
+
+export type QueryStarArgs = {
   lang: Scalars['String']['input'];
   uid: Scalars['String']['input'];
 };
@@ -628,6 +661,53 @@ export enum SortProjecty {
   TitleDesc = 'title_DESC'
 }
 
+export enum SortStary {
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  MetaDescriptionAsc = 'meta_description_ASC',
+  MetaDescriptionDesc = 'meta_description_DESC',
+  MetaFirstPublicationDateAsc = 'meta_firstPublicationDate_ASC',
+  MetaFirstPublicationDateDesc = 'meta_firstPublicationDate_DESC',
+  MetaLastPublicationDateAsc = 'meta_lastPublicationDate_ASC',
+  MetaLastPublicationDateDesc = 'meta_lastPublicationDate_DESC',
+  MetaTitleAsc = 'meta_title_ASC',
+  MetaTitleDesc = 'meta_title_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export type Star = _Document & _Linkable & {
+  __typename?: 'Star';
+  _linkType?: Maybe<Scalars['String']['output']>;
+  _meta: Meta;
+  description?: Maybe<Scalars['Json']['output']>;
+  image?: Maybe<Scalars['Json']['output']>;
+  meta_description?: Maybe<Scalars['String']['output']>;
+  meta_image?: Maybe<Scalars['Json']['output']>;
+  meta_title?: Maybe<Scalars['String']['output']>;
+  starlink?: Maybe<_Linkable>;
+  title?: Maybe<Scalars['Json']['output']>;
+};
+
+/** A connection to a list of items. */
+export type StarConnectionConnection = {
+  __typename?: 'StarConnectionConnection';
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<StarConnectionEdge>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  totalCount: Scalars['Long']['output'];
+};
+
+/** An edge in a connection. */
+export type StarConnectionEdge = {
+  __typename?: 'StarConnectionEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node: Star;
+};
+
 export type WhereArticle = {
   /** description */
   description_fulltext?: InputMaybe<Scalars['String']['input']>;
@@ -690,6 +770,19 @@ export type WhereProject = {
   seo_description_fulltext?: InputMaybe<Scalars['String']['input']>;
   seo_title?: InputMaybe<Scalars['String']['input']>;
   seo_title_fulltext?: InputMaybe<Scalars['String']['input']>;
+  /** title */
+  title_fulltext?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type WhereStar = {
+  /** description */
+  description_fulltext?: InputMaybe<Scalars['String']['input']>;
+  meta_description?: InputMaybe<Scalars['String']['input']>;
+  meta_description_fulltext?: InputMaybe<Scalars['String']['input']>;
+  meta_title?: InputMaybe<Scalars['String']['input']>;
+  meta_title_fulltext?: InputMaybe<Scalars['String']['input']>;
+  /** starlink */
+  starlink?: InputMaybe<Scalars['String']['input']>;
   /** title */
   title_fulltext?: InputMaybe<Scalars['String']['input']>;
 };
