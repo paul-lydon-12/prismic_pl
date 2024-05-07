@@ -1,4 +1,4 @@
-import { Article, Frontpage, Layout, Page, Project } from 'prismic-types';
+import { Article, Frontpage, Layout, Page, Project, Star } from 'prismic-types';
 
 import { prismicPictureUrl } from 'prismic/images/prismicImages';
 import { linkResolver } from 'prismic/linkResolver';
@@ -8,7 +8,7 @@ import { asText } from 'components/rich-text/RichText';
 
 import { Meta, OpenGraph, OpenGraphArticle, TwitterMeta } from './Meta';
 
-type SupportedSeoTypes = Article | Page | Frontpage | Project;
+type SupportedSeoTypes = Article | Page | Frontpage | Project | Star;
 
 type SupportedSeoTypesWithImage = Exclude<SupportedSeoTypes, Frontpage>;
 
