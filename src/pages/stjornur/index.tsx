@@ -19,7 +19,7 @@ import { localeToPrismicLocale } from 'i18n/i18n';
 import { ExcludesFalse } from 'utils/excludesFalse';
 import { getStringFromQueryString } from 'utils/queryString';
 
-export type ProjectsProps = {
+export type StarsProps = {
   preview: boolean;
   stars: Array<Star>;
   pageInfo: PageInfo | null;
@@ -87,7 +87,7 @@ export default function StarsPage(
   );
 }
 
-export const getServerSideProps: GetServerSideProps<ProjectsProps> = async ({
+export const getServerSideProps: GetServerSideProps<StarsProps> = async ({
   preview = false,
   query: qs = {},
   locale,
@@ -110,7 +110,7 @@ export const getServerSideProps: GetServerSideProps<ProjectsProps> = async ({
     }),
   ]);
 
-  const pageInfo = pageData?.allProjects.pageInfo ?? null;
+  const pageInfo = pageData?.allStars.pageInfo ?? null;
 
   const stars: Array<Star> = (pageData?.allStars.edges ?? [])
     .map((i) => i?.node ?? null)

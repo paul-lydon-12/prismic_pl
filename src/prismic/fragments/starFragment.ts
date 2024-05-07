@@ -1,5 +1,5 @@
 export const starFragment = /* GraphQL */ `
-  fragment project on Project {
+  fragment star on Star {
     __typename
     _meta {
       ...meta
