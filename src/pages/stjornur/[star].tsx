@@ -1,9 +1,9 @@
 import { useIntl } from 'react-intl';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { Project, Layout } from 'prismic-types';
+import { Star, Layout } from 'prismic-types';
 
 import { linkResolver } from 'prismic/linkResolver';
-import { projectQuery } from 'prismic/queries/projectQuery';
+import { starQuery } from 'prismic/queries/starQuery';
 import { layoutDataQuery } from 'prismic/queries/layoutQuery';
 import { mapSlices } from 'prismic/slice-mapper';
 import { sliceRenderer } from 'prismic/slices/slices';
@@ -20,46 +20,46 @@ import { ExcludesFalse } from 'utils/excludesFalse';
 import { getStringFromQueryString } from 'utils/queryString';
 import { Picture } from 'components/picture/Picture';
 
-export type ProjectProps = {
+export type StarProps = {
   preview: boolean;
-  project: Project | null;
-  related: Array<Project>;
+  star: Star | null;
+  related: Array<Star>;
   layout: Layout | null;
 };
 
-export default function ProjectComponent(
+export default function StarComponent(
   data: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
   const { formatMessage } = useIntl();
 
-  const project = data.project ?? null;
+  const star = data.star ?? null;
   const related = data.related;
 
-  console.log('========' , project)
+  console.log('========' , star)
 
-  if (!project) {
+  if (!star) {
     return null;
   }
 
   return (
     <>
       <PrismicMeta
-        data={project}
+        data={star}
         layout={data.layout}
       />
       <article>
         <Section>
-          <H1>{asText(project.title)}</H1>
+          <H1>{asText(star.title)}</H1>
           <p>Hér fyrir neðan eru gögn sett fram sem strengur</p>
-          {asText(project.description)}
+          {asText(star.description)}
           <p>Hér fyrir neðan eru gögn sett fram sem richt text (styður bold, italic etc sem að er sett upp í prismic)</p>
-          <RichText>{project.description}</RichText>
-          <Link to={linkResolver(project.externalplanetlink)}>Hlekkur á mig</Link>
+          <RichText>{star.description}</RichText>
+          <Link to={linkResolver(star.starlink)}>Hlekkur á mig</Link>
 
-          { project.image && (
+          { star.image && (
           <Picture
             className="picture"
-            src={project.image?.url}
+            src={star.image?.url}
             width={480}
             height={270}
           /> 
@@ -70,7 +70,7 @@ export default function ProjectComponent(
 
         {related.length > 0 && (
           <Section>
-            <H2>Fleiri verkefni</H2>
+            <H2>Fleiri stjörnur</H2>
             <ul>
               {related.map((item, i) => (
                 <li key={i}>
@@ -89,7 +89,7 @@ export default function ProjectComponent(
   );
 }
 
-export const getServerSideProps: GetServerSideProps<ProjectProps> = async ({
+export const getServerSideProps: GetServerSideProps<StarProps> = async ({
   preview = false,
   previewData,
   params,
@@ -97,33 +97,33 @@ export const getServerSideProps: GetServerSideProps<ProjectProps> = async ({
   resolvedUrl,
 }) => {
   const lang = localeToPrismicLocale(locale);
-  const uid = getStringFromQueryString(params?.project) ?? '';
+  const uid = getStringFromQueryString(params?.star) ?? '';
 
   const variables = { uid, lang };
   const cacheKey = `${lang}-uid-${uid}`;
 
   const [layoutData, pageData] = await Promise.all([
     layoutDataQuery(lang),
-    query(projectQuery, {
+    query(starQuery, {
       previewData,
       variables,
-      cacheKey: `project-${cacheKey}`,
+      cacheKey: `star-${cacheKey}`,
       breadcrumbs: [resolvedUrl],
     }),
   ]);
 
-  const project = pageData?.project ?? null;
+  const star = pageData?.star ?? null;
  
   
-  if (!project) {
+  if (!star) {
     return {
       notFound: true,
     };
   }
   
-  const related: Array<Project> = (pageData?.allProjects.edges ?? [])
+  const related: Array<Star> = (pageData?.allStars.edges ?? [])
   .map((i) => i?.node ?? null)
-  .filter((i) => i?._meta.uid !== project._meta.uid)
+  .filter((i) => i?._meta.uid !== star._meta.uid)
   .filter(Boolean as unknown as ExcludesFalse)
   .slice(0, 3);
   
@@ -133,7 +133,7 @@ export const getServerSideProps: GetServerSideProps<ProjectProps> = async ({
   return {
     props: {
       preview,
-      project,
+      star,
       related,
       layout,
     },

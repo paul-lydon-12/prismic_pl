@@ -1,11 +1,11 @@
 import { useIntl } from 'react-intl';
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useRouter } from 'next/router';
-import { Project, Layout, PageInfo } from 'prismic-types';
+import { Star, Layout, PageInfo } from 'prismic-types';
 
 import { linkResolver } from 'prismic/linkResolver';
 import { isFirstCursor, pageNumberToCursor } from 'prismic/paging';
-import { projectsQuery } from 'prismic/queries/projectsQuery';
+import { starsQuery } from 'prismic/queries/starsQuery';
 import { layoutDataQuery } from 'prismic/queries/layoutQuery';
 
 import { H1 } from 'components/heading/Heading';
@@ -21,7 +21,7 @@ import { getStringFromQueryString } from 'utils/queryString';
 
 export type ProjectsProps = {
   preview: boolean;
-  projects: Array<Project>;
+  stars: Array<Star>;
   pageInfo: PageInfo | null;
   page: number;
   layout: Layout | null;
@@ -29,15 +29,15 @@ export type ProjectsProps = {
 
 export const PER_PAGE = 9;
 
-export default function ProjectsPage(
+export default function StarsPage(
   data: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
-  const { projects, pageInfo, page = 1 } = data;
+  const { stars, pageInfo, page = 1 } = data;
   const { formatMessage } = useIntl();
 
   const router = useRouter();
 
-  if (projects.length === 0) {
+  if (stars.length === 0) {
     return <>empty ... ...</>;
   }
 
@@ -52,10 +52,10 @@ export default function ProjectsPage(
     <>
       <PrismicMeta layout={data.layout} />
       
-      <div><p>verkefni - xx</p></div>
+      <div><p>Stjörnur og stars</p></div>
       <Section>
         <ul>
-          {projects.map((item, i) => (
+          {stars.map((item, i) => (
             <li key={i}>
               <H1>{asText(item.title)}</H1>
               {item.description && <RichText>{item.description}</RichText>}
@@ -104,25 +104,25 @@ export const getServerSideProps: GetServerSideProps<ProjectsProps> = async ({
 
   const [layoutData, pageData] = await Promise.all([
     layoutDataQuery(lang),
-    query(projectsQuery, {
+    query(starsQuery, {
       variables,
-      cacheKey: `projects-${lang}-page-${page}`,
+      cacheKey: `stars-${lang}-page-${page}`,
     }),
   ]);
 
   const pageInfo = pageData?.allProjects.pageInfo ?? null;
 
-  const projects: Array<Project> = (pageData?.allProjects.edges ?? [])
+  const stars: Array<Star> = (pageData?.allStars.edges ?? [])
     .map((i) => i?.node ?? null)
     .filter(Boolean as unknown as ExcludesFalse);
   const layout = layoutData?.layout ?? null;
 
-  console.log(layout, projects, ' sdf')
+  console.log(layout, stars, ' sdf')
 
   return {
     props: {
       preview,
-      projects,
+      stars,
       pageInfo,
       page,
       lang,
