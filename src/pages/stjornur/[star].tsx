@@ -52,8 +52,9 @@ export default function StarComponent(
           <H1>{asText(star.title)}</H1>
           <p>Hér fyrir neðan eru gögn sett fram sem strengur</p>
           {asText(star.description)}
-          <p>Hér fyrir neðan eru gögn sett fram sem richt text (styður bold, italic etc sem að er sett upp í prismic)</p>
+          <p>Hér fyrir neðan eru gögn sett fram sem rich text (styður bold, italic etc sem að er sett upp í prismic)</p>
           <RichText>{star.description}</RichText>
+          <p>Birtan:   {star.brightnesslevel}</p>
           <Link to={linkResolver(star.starlink)}>Hlekkur á mig</Link>
 
           { star.image && (
