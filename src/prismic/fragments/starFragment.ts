@@ -10,6 +10,7 @@ export const starFragment = /* GraphQL */ `
       ...linkable
     }
     image
+    brightnesslevel
 
     seo_title
     seo_description

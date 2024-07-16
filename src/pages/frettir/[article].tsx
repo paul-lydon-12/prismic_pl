@@ -89,6 +89,9 @@ export const getServerSideProps: GetServerSideProps<ArticleProps> = async ({
   const lang = localeToPrismicLocale(locale);
   const uid = getStringFromQueryString(params?.article) ?? '';
 
+  console.log('========' , lang, uid , resolvedUrl)
+
+
   const variables = { uid, lang };
   const cacheKey = `${lang}-uid-${uid}`;
 

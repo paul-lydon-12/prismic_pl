@@ -662,6 +662,8 @@ export enum SortProjecty {
 }
 
 export enum SortStary {
+  BrightnesslevelAsc = 'brightnesslevel_ASC',
+  BrightnesslevelDesc = 'brightnesslevel_DESC',
   DescriptionAsc = 'description_ASC',
   DescriptionDesc = 'description_DESC',
   MetaFirstPublicationDateAsc = 'meta_firstPublicationDate_ASC',
@@ -680,6 +682,7 @@ export type Star = _Document & _Linkable & {
   __typename?: 'Star';
   _linkType?: Maybe<Scalars['String']['output']>;
   _meta: Meta;
+  brightnesslevel?: Maybe<Scalars['Float']['output']>;
   description?: Maybe<Scalars['Json']['output']>;
   image?: Maybe<Scalars['Json']['output']>;
   seo_description?: Maybe<Scalars['String']['output']>;
@@ -775,6 +778,14 @@ export type WhereProject = {
 };
 
 export type WhereStar = {
+  /** brightnesslevel */
+  brightnesslevel?: InputMaybe<Scalars['Float']['input']>;
+  /** brightnesslevel */
+  brightnesslevel_gt?: InputMaybe<Scalars['Float']['input']>;
+  /** brightnesslevel */
+  brightnesslevel_lt?: InputMaybe<Scalars['Float']['input']>;
+  /** brightnesslevel */
+  brightnesslevel_range?: InputMaybe<Array<Scalars['Float']['input']>>;
   /** description */
   description_fulltext?: InputMaybe<Scalars['String']['input']>;
   seo_description?: InputMaybe<Scalars['String']['input']>;

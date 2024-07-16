@@ -46,6 +46,13 @@
           "thumbnails": []
         }
       },
+      "brightnesslevel": {
+        "type": "Number",
+        "config": {
+          "label": "BrightnessLevel",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
