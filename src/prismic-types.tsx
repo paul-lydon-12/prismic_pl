@@ -114,6 +114,38 @@ export type ArticleSlicesVideoDefaultPrimary = {
 
 export type ArticleSlicesVideoVariation = ArticleSlicesVideoDefault;
 
+export type Constellation = _Document & _Linkable & {
+  __typename?: 'Constellation';
+  _linkType?: Maybe<Scalars['String']['output']>;
+  _meta: Meta;
+  constellationlink?: Maybe<_Linkable>;
+  description?: Maybe<Scalars['Json']['output']>;
+  image?: Maybe<Scalars['Json']['output']>;
+  seo_description?: Maybe<Scalars['String']['output']>;
+  seo_image?: Maybe<Scalars['Json']['output']>;
+  seo_title?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['Json']['output']>;
+};
+
+/** A connection to a list of items. */
+export type ConstellationConnectionConnection = {
+  __typename?: 'ConstellationConnectionConnection';
+  /** A list of edges. */
+  edges?: Maybe<Array<Maybe<ConstellationConnectionEdge>>>;
+  /** Information to aid in pagination. */
+  pageInfo: PageInfo;
+  totalCount: Scalars['Long']['output'];
+};
+
+/** An edge in a connection. */
+export type ConstellationConnectionEdge = {
+  __typename?: 'ConstellationConnectionEdge';
+  /** A cursor for use in pagination. */
+  cursor: Scalars['String']['output'];
+  /** The item at the end of the edge. */
+  node: Constellation;
+};
+
 export type Frontpage = _Document & _Linkable & {
   __typename?: 'Frontpage';
   _linkType?: Maybe<Scalars['String']['output']>;
@@ -340,12 +372,14 @@ export type Query = {
   __typename?: 'Query';
   _allDocuments: _DocumentConnection;
   allArticles: ArticleConnectionConnection;
+  allConstellations: ConstellationConnectionConnection;
   allFrontpages: FrontpageConnectionConnection;
   allLayouts: LayoutConnectionConnection;
   allPages: PageConnectionConnection;
   allProjects: ProjectConnectionConnection;
   allStars: StarConnectionConnection;
   article?: Maybe<Article>;
+  constellation?: Maybe<Constellation>;
   frontpage?: Maybe<Frontpage>;
   layout?: Maybe<Layout>;
   page?: Maybe<Page>;
@@ -400,6 +434,31 @@ export type QueryAllArticlesArgs = {
   uid?: InputMaybe<Scalars['String']['input']>;
   uid_in?: InputMaybe<Array<Scalars['String']['input']>>;
   where?: InputMaybe<WhereArticle>;
+};
+
+
+export type QueryAllConstellationsArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  firstPublicationDate?: InputMaybe<Scalars['DateTime']['input']>;
+  firstPublicationDate_after?: InputMaybe<Scalars['DateTime']['input']>;
+  firstPublicationDate_before?: InputMaybe<Scalars['DateTime']['input']>;
+  fulltext?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
+  id_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  lang?: InputMaybe<Scalars['String']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  lastPublicationDate?: InputMaybe<Scalars['DateTime']['input']>;
+  lastPublicationDate_after?: InputMaybe<Scalars['DateTime']['input']>;
+  lastPublicationDate_before?: InputMaybe<Scalars['DateTime']['input']>;
+  similar?: InputMaybe<Similar>;
+  sortBy?: InputMaybe<SortConstellationy>;
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
+  tags_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  uid?: InputMaybe<Scalars['String']['input']>;
+  uid_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  where?: InputMaybe<WhereConstellation>;
 };
 
 
@@ -534,6 +593,12 @@ export type QueryArticleArgs = {
 };
 
 
+export type QueryConstellationArgs = {
+  lang: Scalars['String']['input'];
+  uid: Scalars['String']['input'];
+};
+
+
 export type QueryFrontpageArgs = {
   lang: Scalars['String']['input'];
   uid: Scalars['String']['input'];
@@ -584,6 +649,21 @@ export enum SortArticley {
   MetaLastPublicationDateDesc = 'meta_lastPublicationDate_DESC',
   PublishedAsc = 'published_ASC',
   PublishedDesc = 'published_DESC',
+  SeoDescriptionAsc = 'seo_description_ASC',
+  SeoDescriptionDesc = 'seo_description_DESC',
+  SeoTitleAsc = 'seo_title_ASC',
+  SeoTitleDesc = 'seo_title_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export enum SortConstellationy {
+  DescriptionAsc = 'description_ASC',
+  DescriptionDesc = 'description_DESC',
+  MetaFirstPublicationDateAsc = 'meta_firstPublicationDate_ASC',
+  MetaFirstPublicationDateDesc = 'meta_firstPublicationDate_DESC',
+  MetaLastPublicationDateAsc = 'meta_lastPublicationDate_ASC',
+  MetaLastPublicationDateDesc = 'meta_lastPublicationDate_DESC',
   SeoDescriptionAsc = 'seo_description_ASC',
   SeoDescriptionDesc = 'seo_description_DESC',
   SeoTitleAsc = 'seo_title_ASC',
@@ -723,6 +803,19 @@ export type WhereArticle = {
   /** seo_description */
   seo_description_fulltext?: InputMaybe<Scalars['String']['input']>;
   /** seo_title */
+  seo_title_fulltext?: InputMaybe<Scalars['String']['input']>;
+  /** title */
+  title_fulltext?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type WhereConstellation = {
+  /** constellationlink */
+  constellationlink?: InputMaybe<Scalars['String']['input']>;
+  /** description */
+  description_fulltext?: InputMaybe<Scalars['String']['input']>;
+  seo_description?: InputMaybe<Scalars['String']['input']>;
+  seo_description_fulltext?: InputMaybe<Scalars['String']['input']>;
+  seo_title?: InputMaybe<Scalars['String']['input']>;
   seo_title_fulltext?: InputMaybe<Scalars['String']['input']>;
   /** title */
   title_fulltext?: InputMaybe<Scalars['String']['input']>;

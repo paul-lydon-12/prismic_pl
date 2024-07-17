@@ -71,6 +71,8 @@ export function linkResolverByType(type?: string, uid?: string, locale?: string)
       return `${localeString}verkefni/${uid}`;
     case 'star':
         return `${localeString}stjornur/${uid}`;  
+    case 'constellation':
+        return `${localeString}vinahopar/${uid}`;      
     default:
       return localeString;
   }
